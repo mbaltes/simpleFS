@@ -1,6 +1,5 @@
-// Name: Mark Baltes
-// ID:   004899202
-// File: Shell.cpp
+// Author: Mark Baltes
+// File  : Shell.cpp
 //
 // Shell class implementation.
 

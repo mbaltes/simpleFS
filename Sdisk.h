@@ -1,6 +1,5 @@
-// Name: Mark Baltes
-// ID:   004899202
-// File: Sdisk.h
+// Author: Mark Baltes
+// File  : Sdisk.h
 //
 // Sdisk class description.
 

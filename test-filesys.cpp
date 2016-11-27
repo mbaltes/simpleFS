@@ -1,6 +1,5 @@
-// Name: Mark Baltes
-// ID:   004899202
-// File: test-filesys.cpp
+// Author: Mark Baltes
+// File  : test-filesys.cpp
 //
 // Driver for Filesys.
 

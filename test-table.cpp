@@ -1,6 +1,5 @@
-// Name: Mark Baltes
-// ID:   004899202
-// File: test-table.cpp
+// Author: Mark Baltes
+// File  : test-table.cpp
 //
 // Driver for Table.
 

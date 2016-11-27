@@ -1,6 +1,5 @@
-// Name: Mark Baltes
-// ID:   004899202
-// File: Filesys.cpp
+// Author: Mark Baltes
+// File  : Filesys.cpp
 //
 // Filesys class implementation.
 
@@ -22,7 +21,7 @@ Filesys::Filesys(std::string diskName, int numberOfBlocks, int blockSize)
     std::string buffer;
     getBlock(0, buffer);
 
-    if (buffer[0] == '#') { // No filesystem exists
+    if (buffer[0] == '#') {  // No filesystem exists
         std::cout << "Creating fs..." << '\n';
         for (int i = 1; i <= rootSize; i++) {
             fileName.push_back("xxxxx");
@@ -67,7 +66,6 @@ Filesys::Filesys(std::string diskName, int numberOfBlocks, int blockSize)
 
         fssynch();
     }
-
 }
 
 int Filesys::fsclose() {
@@ -87,9 +85,7 @@ int Filesys::fssynch() {
     buffer = outstream.str();
     // Block before writing
     std::vector<std::string> blocks = block(buffer, getBlocksize());
-    //std::cout << "blocks size: " << blocks.size() << '\n';
     for (int i = 1; i <= blocks.size(); i++) {
-        //std::cout << blocks[i-1] << '\n';
         putBlock(i, blocks[i - 1]);
     }
 
@@ -99,10 +95,8 @@ int Filesys::fssynch() {
                    << std::setw(5) << firstBlock[i] << " ";
     }
     buffer = outstream2.str();
-    //std::cout << "Root buffer: " << buffer << '\n';
     blocks.clear();
     blocks = block(buffer, getBlocksize());
-    //std::cout << "blocks size: " << blocks.size() << '\n';
     for (int i = 0; i < blocks.size(); i++) {
         putBlock(i, blocks[i]);
     }
@@ -157,7 +151,6 @@ int Filesys::getFirstBlock(std::string file) {
         }
     }
     // File doesn't exist.
-    //throw std::invalid_argument("Cannot get first block of non-existing file.");
     return 0;
 }
 
@@ -182,7 +175,7 @@ int Filesys::addBlock(std::string file, std::string block) {
                 }
             }
         }
-    } else { // File already has blocks. 
+    } else {  // File already has blocks. 
         allocate = fat[0];
         fat[0] = fat[fat[0]];
         fat[allocate] = 0;
@@ -200,7 +193,7 @@ int Filesys::addBlock(std::string file, std::string block) {
 int Filesys::delBlock(std::string file, int blockNumber) {
     int nextBlock = getFirstBlock(file);
     // Can't delete block of empty file.
-    if (nextBlock == 0) { // File doesn't exist or is empty.
+    if (nextBlock == 0) {  // File doesn't exist or is empty.
         throw std::invalid_argument("Cannot delete block.");
         return 0;
     } else if (nextBlock == blockNumber) { // Block to del is first block.
@@ -209,7 +202,7 @@ int Filesys::delBlock(std::string file, int blockNumber) {
                 firstBlock[i] = fat[blockNumber];
             }
         }
-    } else { // Block to del is not first block.
+    } else {  // Block to del is not first block.
         while (fat[nextBlock] != blockNumber && fat[nextBlock] != 0) {
             nextBlock = fat[nextBlock];
         }
@@ -229,27 +222,27 @@ int Filesys::readBlock(std::string file, int blockNumber, std::string& buffer) {
     if (checkBlock(file, blockNumber)) { // Block is in file.
         getBlock(blockNumber, buffer);
         return 1;
-    } else { // Block not in file.
+    } else {  // Block not in file.
         throw std::invalid_argument("Cannot read: block permission error.");
         return 0;
     }
 }
 
 int Filesys::writeBlock(std::string file, int blockNumber, std::string buffer) {
-    if (checkBlock(file, blockNumber)) { // Block is in file.
+    if (checkBlock(file, blockNumber)) {  // Block is in file.
         putBlock(blockNumber, buffer);
         fssynch();
         return 1;
-    } else { // Block not in file.
+    } else {  // Block not in file.
         throw std::invalid_argument("Cannot write: block permission error.");
         return 0;
     }
 }
 
 int Filesys::nextBlock(std::string file, int blockNumber) {
-    if (checkBlock(file, blockNumber)) { // Block is in file.
+    if (checkBlock(file, blockNumber)) {  // Block is in file.
         return fat[blockNumber];
-    } else { // Block not in file.
+    } else {  // Block not in file.
         throw std::invalid_argument("nextBlock error: block not in file.");
         return 0;
     }

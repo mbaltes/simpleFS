@@ -1,15 +1,10 @@
-//
-//
 #include <iostream>
 #include <string>
 #include "Shell.h"
 
 int main() {
-    //
     //This main program inputs commands to the shell.
     //It inputs commands as : command op1 op2
-    //You should modify it to work for your implementation.
-    //
 
     Shell sh("disk5", 16, 32);
 

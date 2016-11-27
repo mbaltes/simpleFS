@@ -1,6 +1,5 @@
-// Name: Mark Baltes
-// ID:   004899202
-// File: Sdisk.cpp
+// Author: Mark Baltes
+// File  : Sdisk.cpp
 //
 // Implementation for Sdisk class.
 

@@ -1,6 +1,5 @@
-// Name: Mark Baltes
-// ID:   004899202
-// File: Filesys.h
+// Author: Mark Baltes
+// File  : Filesys.h
 //
 // Filesys class description.
 

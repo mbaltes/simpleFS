@@ -1,6 +1,5 @@
-// Name: Mark Baltes
-// ID:   004899202
-// File: Table.cpp
+// Author: Mark Baltes
+// File  : Table.cpp
 //
 // Table class implementation.
 
@@ -28,7 +27,7 @@ int Table::buildTable(std::string inputFile) {
     std::string rec;
     getline(infile, rec);
     while (infile.good()) {
-        // process rec
+        // Process rec
         std::string key = rec.substr(0, 5);
         iKey = atoi(key.c_str());
         std::vector<std::string> b = block(rec, getBlocksize());
@@ -43,7 +42,7 @@ int Table::buildTable(std::string inputFile) {
     
 std::string Table::search(int value) {
     int block = indexSearch(value);
-    if (block == 0) { // Value not found.
+    if (block == 0) {  // Value not found.
         return "Search value not found.";
     } else {
         std::string record;

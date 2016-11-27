@@ -1,6 +1,5 @@
-// Name: Mark Baltes
-// ID:   004899202
-// File: Table.h
+// Author: Mark Baltes
+// File  : Table.h
 //
 // Table class description.
 
@@ -21,7 +20,6 @@ private:
     std::string flatFile;
     std::string indexFile;
     int numberOfRecords;
-    //Filesys fileSystem;
     int indexSearch(int value);
     std::vector<int> key;
     std::vector<int> blockID;

@@ -1,6 +1,5 @@
-// Name: Mark Baltes
-// ID:   004899202
-// File: test-sdisk.cpp
+// Author: Mark Baltes
+// File  : test-sdisk.cpp
 //
 // Driver for Sdisk class.
 
